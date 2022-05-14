@@ -33,6 +33,11 @@ At the first, this is required before you running the application. At default OS
 
    If Windows or Mac user, you can click [this page](https://go.dev/doc/install) for installation.
 
+
+2. **Download dependencies**
+
+     `go mod download`
+
 ## How to Run
 
 ### `go run main.go`
