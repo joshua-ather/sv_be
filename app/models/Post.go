@@ -133,7 +133,12 @@ func (p *Post) DeletePost(c echo.Context) (int64, error) {
 	db := config.DB()
 	id := c.Param("id")
 
-	db = db.Debug().Model(&Post{}).Where("id = ?", id).Take(&Post{}).Delete(&Post{})
+	db = db.Debug().Model(&Post{}).Where("id = ?", id).Take(&Post{}).UpdateColumns(
+		map[string]interface{}{
+			"status":       "Thrash",
+			"updated_date": time.Now(),
+		},
+	)
 
 	if db.Error != nil {
 		return 0, db.Error
